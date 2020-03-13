@@ -1,13 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    
     <meta charset="utf-8" />
-
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+    <title>Virus Simulation</title>
   </head>
   <body>
-    <script src="sketch.js"></script>
+    <div id="main">
+
+      <div class="row">
+        <div class="col">
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Simulation</div>
+            <div class="card-body" id="canvas-parrent">
+              <div id="canvas-holder"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Manipulate Simulation</div>
+            <div class="card-body">
+              <button class="btn btn-primary" id="startstopButton">Pause Simulation</button>
+              <button class="btn btn-danger" id="resetButton">Reset Simulation</button>
+              
+              <hr>
+
+              <p>Simulation Size (amount of people): <span id="simulationSizeValue"></span></p>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="1000" value="500" class="slider" id="simulationSizeSlider">
+              </div>
+
+              <hr>
+
+              <p>Number of people infected from start: <span id="peopleInfectedFromStartValue"></span></p>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="1000" value="20" class="slider" id="peopleInfectedFromStartSlider">
+              </div>
+              <p>Infection Rate: <span id="infectionRateValue"></span>%</p>
+              <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="20" class="slider" id="infectionRateSlider">
+              </div>
+
+              <hr>
+
+              <p>Number of Docters: <span id="numberOfDoctersValue"></span></p>
+              <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="5" class="slider" id="numberOfDoctersSlider">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Statistik</div>
+            <div class="card-body">
+              <p>People Healthy: </p>
+              <p>People Infected: </p>
+              <p>People Cured: </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    
+    <script>
+      // Code for fancy slider
+      var simulationSizeSlider = document.getElementById("simulationSizeSlider");
+      var simulationSizeValue = document.getElementById("simulationSizeValue");
+      simulationSizeValue.innerHTML = simulationSizeSlider.value;
+      simulationSizeSlider.oninput = function() {
+        simulationSizeValue.innerHTML = this.value;
+      }
+
+      var peopleInfectedFromStartSlider = document.getElementById("peopleInfectedFromStartSlider");
+      var peopleInfectedFromStartValue = document.getElementById("peopleInfectedFromStartValue");
+      peopleInfectedFromStartValue.innerHTML = peopleInfectedFromStartSlider.value;
+      peopleInfectedFromStartSlider.oninput = function() {
+        peopleInfectedFromStartValue.innerHTML = this.value;
+      }
+
+      var infectionRateSlider = document.getElementById("infectionRateSlider");
+      var infectionRateValue = document.getElementById("infectionRateValue");
+      infectionRateValue.innerHTML = infectionRateSlider.value;
+      infectionRateSlider.oninput = function() {
+        infectionRateValue.innerHTML = this.value;
+      }
+
+      var numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
+      var numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
+      numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
+      numberOfDoctersSlider.oninput = function() {
+        numberOfDoctersValue.innerHTML = this.value;
+      }
+
+
+      </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+
+    <script src="person.js"></script>
+    <script src="userinput.js"></script>
+    <script src="statistics.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
