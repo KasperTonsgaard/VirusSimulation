@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -18,7 +19,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-7"><!-- Simulation card-->
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Simulation</div>
+            <b><div class="card-header">Simulation</div></b>
             <div class="card-body" id="canvas-parrent">
               <div id="canvas-holder"></div>
             </div>
@@ -27,7 +28,7 @@
         
         <div class="col-md-12 col-lg-5"><!-- Edit Simulation card-->       
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Edit Simulation</div>
+            <b><div class="card-header">Edit Simulation</div></b>
             <div class="card-body">
               <button class="btn btn-primary" id="startstopButton">Pause Simulation</button>
               <button class="btn btn-danger" id="resetButton">Reset Simulation</button>
@@ -51,7 +52,7 @@
               </div>
               <p>Deadlyness: <span id="deadlynessValue"></span>%</p>
               <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="50" class="slider" id="deadlynessSlider">
+                <input type="range" min="0" max="100" value="5" class="slider" id="deadlynessSlider">
               </div>
 
               <hr>
@@ -66,9 +67,9 @@
           </div>
         </div>
 
-        <div class="col-md-12 col-lg-5"><!-- Statistics card-->
+        <div class="col-md-12 col-lg-5 order-lg-last"><!-- Statistics card-->
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Statistics</div>
+            <b><div class="card-header">Statistics</div></b>
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -88,8 +89,28 @@
 
         <div class="col-md-12 col-lg-7"><!-- Graph card-->
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Graph</div>
+            <b><div class="card-header">Graph</div></b>
             <div class="card-body" id="graph-parrent">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">People Healthy</th>
+                      <th scope="col">People Cured</th>
+                      <th scope="col">People Infected</th>
+                      <th scope="col">People Dead</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th style="background-color: #c8c8c8;"></th>
+                      <td style="background-color: #00ff00;"></td>
+                      <td style="background-color: #ff0000;"></td>
+                      <td style="background-color: #000000;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <div id="graph-holder"></div>
             </div>
           </div>

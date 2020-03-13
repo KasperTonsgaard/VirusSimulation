@@ -2,7 +2,10 @@ canvasHeight = 500;
 
 simutlationRunning = true;
 balls = [];
+healthyOverTime = [0,0];
 infectedOverTime = [0,0];
+curedOverTime = [0,0];
+deadOverTime = [0,0];
 
 infectionRate = 0;
 
@@ -12,7 +15,7 @@ amountHealthy = amount;
 amountCured = 0;
 amountDead = 0;
 
-graphDrawn = false;
+graph = null;
 
 startInfected = 0;
 startDoctors = 0;
@@ -27,7 +30,7 @@ function setup() {
   canvas = createCanvas(canvasParrentSize[0], 500);
   canvas.parent('canvas-holder');
 
-  new p5(defaultPlotSketch, "graph-holder");
+  graph = new p5(defaultPlotSketch, "graph-holder");
 
   setupInputHandlers();
 
@@ -78,14 +81,11 @@ function draw() {
   }
 
   drawStatistic();
-  
-  /*
-  if(amountInfected == 0 && graphDrawn == false){
-    len = infectedOverTime.length;
-    graphDrawn = true;
-  }*/
 
+  append(healthyOverTime, [time, amountHealthy]);
   append(infectedOverTime, [time, amountInfected]);
+  append(curedOverTime, [time, amountCured]);
+  append(deadOverTime, [time, amountDead]);
 
 }
 
@@ -102,3 +102,9 @@ function getCanvasParrentSize() {
   return [width, height];
 }
 
+function getGraphParrentSize() {
+  let parrent = select('#graph-parrent');
+  let width = parrent.width - 40;
+  let height = parrent.height - 40;
+  return [width, height];
+}

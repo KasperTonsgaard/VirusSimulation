@@ -38,11 +38,18 @@ function resetSimulation() {
   startstopButton.addClass("reset-sim");
 
   balls = [];
-  infectedOverTime = [];
+  healthyOverTime = [0,0];
+  infectedOverTime = [0,0];
+  curedOverTime = [0,0];
+  deadOverTime = [0,0];
   time = 0;
   amountInfected = 0;
   amountHealthy = 0;
   amountCured = 0;
+
+  graph.remove();
+  graph = new p5(defaultPlotSketch, "graph-holder");
+
 }
 
 function getSliderSettings() {
