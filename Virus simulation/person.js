@@ -12,7 +12,6 @@ function checkCollisionWithBalls() {
                 balls[i].infected = false;
                 balls[i].color = [0, 255, 0];
               }
-              // GIVER DET MENING???, hvorfor er det ikke til 100 - Luccas
               rand = random(0, 250);
               if (rand < balls[y].infectionRate) {
                 if(balls[y].cured == false && balls[y].doctor == false){
@@ -32,26 +31,52 @@ function checkCollisionWithBalls() {
 
 function spawnPeople(){
   let canvasParrentSize = getCanvasParrentSize();
+  
+  // Spawn people
   for(let i = 0; i < amount; i++){
       append(balls, new ball(random(50, canvasParrentSize[0] - 50), random(50, canvasHeight - 50), random(7,10), false, infectionRate, false));
     }
-  for(let i = 0; i < startInfected; i++){
-      randomPerson = round(random(amount));
-      if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
-        balls[randomPerson].infected = true;
-        balls[randomPerson].timeInfected = time;
-        balls[randomPerson].color = [255, 0, 0];
-      }
+
+  // Make random people infected
+  if(startInfected + startDoctors >= amount){
+    alert("There are too many infected or too many doctors compared to the amount of people");
+    resetSimulation();
+  } else {
+    for(let i = 0; i < startInfected; i++){
+        while(true){
+            randomPerson = floor(random(amount));
+            if(balls[randomPerson].infected == true || balls[randomPerson].doctor == true){
+                randomPerson = floor(random(amount));
+            } else {
+                break;
+            }
+          }
+          if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
+            balls[randomPerson].infected = true;
+            balls[randomPerson].timeInfected = time;
+            balls[randomPerson].color = [255, 0, 0];
+          }
+        }
+      
+      // Make random people doctors
+      for(let i = 0; i < startDoctors; i++){
+          while(true){
+            randomPerson = floor(random(amount));
+            if(balls[randomPerson].infected == true || balls[randomPerson].doctor == true){
+                randomPerson = floor(random(amount));
+            } else {
+                break;
+            }
+          }
+          
+          if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
+            balls[randomPerson].doctor = true;
+            balls[randomPerson].color = [42,127,186];
+          }
+        }
     }
+  }
   
-  for(let i = 0; i < startDoctors; i++){
-      randomPerson = ceil(random(amount));
-      if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
-        balls[randomPerson].doctor = true;
-        balls[randomPerson].color = [42,127,186];
-      }
-    }
-}
 
 
 
@@ -92,6 +117,7 @@ class ball {
 
     this.speedX = random(-2,2);
     this.speedY = random(-2,2);
+    this.speed = 1;
 
     this.color = [255,255,255];
 
@@ -102,13 +128,57 @@ class ball {
   }
   move(){
     if(this.dead == false){
-        this.x = this.x + this.speedX;
-        this.y = this.y + this.speedY;
-    
-        if(ceil(random(10)) == 1){
-        this.speedX = random(-2,2);
-        this.speedY = random(-2,2);
-        }    
+        if(this.doctor){
+            this.shortestDistance = null;
+            for(let i = 0; i < balls.length; i++){
+                if(balls[i].infected){
+                    distance = sqrt(((this.x - balls[i].x)**2) + (((this.y - balls[i].y)**2)));
+                    if(this.shortestDistance == null){
+                        this.shortestDistance = distance;
+                        this.shortestDistancePerson = balls[i];
+                    } else {
+                        if(distance < this.shortestDistance){
+                            this.shortestDistance = distance
+                            this.shortestDistancePerson = balls[i];
+                        }
+                    }
+                }
+            }
+
+            if(this.shortestDistance == null){
+                // Don't move
+                this.x = this.x;
+                this.y = this.y;       
+            } else {
+                this.distanceX = this.shortestDistancePerson.x - this.x;
+                this.distanceY = this.shortestDistancePerson.y - this.y;
+
+                if(this.distanceX < 0){
+                    this.x -= this.speed;
+                } else if(this.distanceX > 0){
+                    this.x += this.speed;
+                } else if(this.distanceX == 0){
+                    this.x = this.x;
+                }
+
+                if(this.distanceY < 0){
+                    this.y -= this.speed;
+                } else if(this.distanceY > 0){
+                    this.y += this.speed;
+                } else if(this.distanceY == 0){
+                    this.y = this.y;
+                }
+            }
+
+        } else {
+            this.x = this.x + this.speedX;
+            this.y = this.y + this.speedY;
+        
+            if(ceil(random(10)) == 1){
+                this.speedX = random(-2,2);
+                this.speedY = random(-2,2);
+            }
+        }
     }
   }
   collisionWithWall(){

@@ -25,7 +25,7 @@
         <div class="col">
 
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Manipulate Simulation</div>
+            <div class="card-header">Edit Simulation</div>
             <div class="card-body">
               <button class="btn btn-primary" id="startstopButton">Pause Simulation</button>
               <button class="btn btn-danger" id="resetButton">Reset Simulation</button>
@@ -41,29 +41,42 @@
 
               <p>Number of people infected from start: <span id="peopleInfectedFromStartValue"></span></p>
               <div class="slidecontainer">
-                <input type="range" min="1" max="1000" value="20" class="slider" id="peopleInfectedFromStartSlider">
+                <input type="range" min="1" max="1000" value="1" class="slider" id="peopleInfectedFromStartSlider">
               </div>
               <p>Infection Rate: <span id="infectionRateValue"></span>%</p>
               <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="20" class="slider" id="infectionRateSlider">
+              </div>
+              <p>Deadlyness: <span id="deadlynessValue"></span>%</p>
+              <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="50" class="slider" id="deadlynessSlider">
               </div>
 
               <hr>
 
               <p>Number of Docters: <span id="numberOfDoctersValue"></span></p>
               <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="5" class="slider" id="numberOfDoctersSlider">
+                <input type="range" min="0" max="100" value="0" class="slider" id="numberOfDoctersSlider">
               </div>
+              
 
             </div>
           </div>
 
           <div class="card text-white bg-secondary mb-3">
-            <div class="card-header">Statistik</div>
+            <div class="card-header">Statistics</div>
             <div class="card-body">
-              <p>People Healthy: </p>
-              <p>People Infected: </p>
-              <p>People Cured: </p>
+              <div class="row">
+                <div class="col">
+                  <p>People Healthy: <span id="amountHealthyValue"></span></p>
+                  <p>People Cured: <span id="amountCuredValue"></span></p>
+                  <p>People Infected: <span id="amountInfectedValue"></span></p>
+                  <p>People Dead: <span id="amountDeadValue"></span></p>
+                </div>
+                <div class="col">
+                  <p>Days Elapsed: <span id="daysElapsedValue"></span></p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -104,10 +117,19 @@
       }
 
 
+      var deadlynessSlider = document.getElementById("deadlynessSlider");
+      var deadlynessValue = document.getElementById("deadlynessValue");
+      deadlynessValue.innerHTML = deadlynessSlider.value;
+      deadlynessSlider.oninput = function() {
+        deadlynessValue.innerHTML = this.value;
+      }
+
+
       </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://raw.githubusercontent.com/jagracar/grafica.js/master/releases/grafica.min.js"></script>
 
     <script src="person.js"></script>
     <script src="userinput.js"></script>

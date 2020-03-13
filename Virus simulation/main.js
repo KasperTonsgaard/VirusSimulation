@@ -10,6 +10,7 @@ amount = 0;
 amountInfected = 0;
 amountHealthy = amount;
 amountCured = 0;
+amountDead = 0;
 
 startInfected = 0;
 startDoctors = 0;
@@ -37,36 +38,42 @@ function draw() {
   // Collision
   checkCollisionWithBalls();
 
-
+  countAmountInfected = 0;
+  countAmountHealthy = 0;
+  countAmountCured = 0;
+  countAmountDead = 0;
   for(let i = 0; i < balls.length; i++){
-    countAmountInfected = 0;
-    countAmountHealthy = 0;
-    countAmountCured = 0;
-
     if(balls[i].infected == true){
       countAmountInfected += 1;
     } else if(balls[i].cured == true){
       countAmountCured += 1;
+    } else if(balls[i].dead == true){
+      countAmountDead += 1;
     } else {
       countAmountHealthy += 1;
     }
     
     balls[i].draw();
-    checkInfectionTime(balls[i]);
-
+    
     if(simutlationRunning){
+      checkInfectionTime(balls[i]);
       balls[i].move();
       balls[i].collisionWithWall();  
     }
   }
 
-  if(simutlationRunning){
+  
+  amountInfected = countAmountInfected;
+  amountHealthy = countAmountHealthy;
+  amountCured = countAmountCured;
+  amountDead = countAmountDead;
+
+  if(amountInfected != 0 && simutlationRunning){
     time += (deltaTime/1000);
   }
 
-  amountInfected = countAmountInfected;
-  amountHealthy = countAmountHealthy;
-
+  drawStatistic();
+  
   append(infectedOverTime, amountInfected);
 
 }
@@ -84,42 +91,3 @@ function getCanvasParrentSize() {
   return [width, height];
 }
 
-/*
-
-var defaultPlotSketch = function(p) {
-	// Initial setup
-	p.setup = function() {
-		// Create the canvas
-		p.createCanvas(500, 350);
-		p.background(150);
-
-		// Prepare the points for the plot
-		var points = [];
-		
-		for (var i = 0; i < 100; i++) {
-			points[i] = new GPoint(i, infectedOverTime[i]);
-		}
-
-		// Create a new plot and set its position on the screen
-		var plot = new GPlot(p);
-		plot.setPos(25, 25);
-
-		// Set the plot title and the axis labels
-		plot.setPoints(points);
-		plot.getXAxis().setAxisLabelText("Tid");
-		plot.getYAxis().setAxisLabelText("Antal smittede");
-		plot.setTitleText("Smittede over tid");
-
-		// Draw it!
-		plot.beginDraw();
-		plot.drawBox();
-		plot.drawXAxis();
-		plot.drawYAxis();
-		plot.drawTitle();
-		plot.drawPoints();
-		plot.drawLines();
-		plot.endDraw();
-	};
-};
-
-*/

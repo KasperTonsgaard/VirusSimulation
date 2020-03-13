@@ -50,11 +50,13 @@ function getSliderSettings() {
   let peopleInfectedFromStartSlider = select("#peopleInfectedFromStartSlider");
   let infectionRateSlider = select("#infectionRateSlider");
   let numberOfDoctersSlider = select("#numberOfDoctersSlider");
+  let deadlynessSlider = select("#deadlynessSlider");
 
   amount = simulationSizeSlider.value();
   amountHealthy = simulationSizeSlider.value();
   startInfected = peopleInfectedFromStartSlider.value();
   infectionRate = infectionRateSlider.value();
   startDoctors = numberOfDoctersSlider.value();
+  deadlyness = deadlynessSlider.value();
 
 }

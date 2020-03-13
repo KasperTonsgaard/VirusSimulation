@@ -1,9 +1,9 @@
 Skal vi have doctor??????
 
 Luccas:
-lav så personer dør eller overlever efter et bestemt antal tid, ift. deres imunforsver(immunity)
-hvis de dør skal de blive sorte og stå stille
-hvis de overlever skal de blive grønne og fortsætte rundt
+lav så personer dør eller overlever efter et bestemt antal tid, ift. deres imunforsver(immunity) (DONE)
+hvis de dør skal de blive sorte og stå stille (DONE)
+hvis de overlever skal de blive grønne og fortsætte rundt (DONE)
 
 Kasper:
 User Input 
