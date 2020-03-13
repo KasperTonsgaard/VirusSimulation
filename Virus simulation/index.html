@@ -12,9 +12,11 @@
   </head>
   <body>
     <div id="main">
-
+      <h1>Virus Simulation</h1>
+      <h3>by: Luccas Sukul and Kasper Tonsgaard</h3>
+      <br>
       <div class="row">
-        <div class="col">
+        <div class="col-md-12 col-lg-7"><!-- Simulation card-->
           <div class="card text-white bg-secondary mb-3">
             <div class="card-header">Simulation</div>
             <div class="card-body" id="canvas-parrent">
@@ -22,8 +24,8 @@
             </div>
           </div>
         </div>
-        <div class="col">
-
+        
+        <div class="col-md-12 col-lg-5"><!-- Edit Simulation card-->       
           <div class="card text-white bg-secondary mb-3">
             <div class="card-header">Edit Simulation</div>
             <div class="card-body">
@@ -62,7 +64,9 @@
 
             </div>
           </div>
+        </div>
 
+        <div class="col-md-12 col-lg-5"><!-- Statistics card-->
           <div class="card text-white bg-secondary mb-3">
             <div class="card-header">Statistics</div>
             <div class="card-body">
@@ -80,6 +84,15 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="col-md-12 col-lg-7"><!-- Graph card-->
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Graph</div>
+            <div class="card-body" id="graph-parrent">
+              <div id="graph-holder"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -129,11 +142,12 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
-    <script src="https://raw.githubusercontent.com/jagracar/grafica.js/master/releases/grafica.min.js"></script>
+    <script src="graphLibrary.js"></script>
 
     <script src="person.js"></script>
     <script src="userinput.js"></script>
     <script src="statistics.js"></script>
+    <script src="defaultPlot.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

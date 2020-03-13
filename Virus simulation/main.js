@@ -2,7 +2,7 @@ canvasHeight = 500;
 
 simutlationRunning = true;
 balls = [];
-infectedOverTime = [];
+infectedOverTime = [0,0];
 
 infectionRate = 0;
 
@@ -11,6 +11,8 @@ amountInfected = 0;
 amountHealthy = amount;
 amountCured = 0;
 amountDead = 0;
+
+graphDrawn = false;
 
 startInfected = 0;
 startDoctors = 0;
@@ -25,15 +27,18 @@ function setup() {
   canvas = createCanvas(canvasParrentSize[0], 500);
   canvas.parent('canvas-holder');
 
+  new p5(defaultPlotSketch, "graph-holder");
+
   setupInputHandlers();
 
   getSliderSettings();
   spawnPeople();
 
+
 }
 
 function draw() {
-  background(70);  
+  background(70); 
 
   // Collision
   checkCollisionWithBalls();
@@ -74,7 +79,13 @@ function draw() {
 
   drawStatistic();
   
-  append(infectedOverTime, amountInfected);
+  /*
+  if(amountInfected == 0 && graphDrawn == false){
+    len = infectedOverTime.length;
+    graphDrawn = true;
+  }*/
+
+  append(infectedOverTime, [time, amountInfected]);
 
 }
 
