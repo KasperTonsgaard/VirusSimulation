@@ -12,7 +12,9 @@ var defaultPlotSketch = function(p) {
 
 		// Prepare the points for the plot
 		var points = [];
+		var pointsHealthy = [];
 		points[0] = new GPoint(0,0);
+		pointsHealthy[0] = new GPoint(0,amount);
 
 
 		// Create a new plot and set its position on the screen
@@ -26,6 +28,7 @@ var defaultPlotSketch = function(p) {
 		// Set the plot title and the axis labels
 		plot.setPoints(points);
 		plot.setPointSize(size);
+		plot.setPointColor([255, 0, 0]);
 		
 		plot.getXAxis().setAxisLabelText("Time");
 		plot.getYAxis().setAxisLabelText("People");
@@ -34,7 +37,7 @@ var defaultPlotSketch = function(p) {
 		plot.setLineWidth(size);
 		plot.setLineColor([255, 0, 0]);
 
-		plot.addLayer("healthy", points);
+		plot.addLayer("healthy", pointsHealthy);
 		plot.getLayer("healthy").setPointColor([200, 200, 200]);
 		plot.getLayer("healthy").setPointSize(size);
 		plot.getLayer("healthy").setLineColor([200, 200, 200]);
@@ -85,12 +88,12 @@ var defaultPlotSketch = function(p) {
 		plot.endDraw();
 
 		// Add and remove new points every 10th of a second
-		plot.setPointColor([255,0,0])
 		plot.addPoint(new GPoint(infectedOverTime[count][0], infectedOverTime[count][1]));
 		plot.getLayer("healthy").addPoint(new GPoint(healthyOverTime[count][0], healthyOverTime[count][1]));
 		plot.getLayer("cured").addPoint(new GPoint(curedOverTime[count][0], curedOverTime[count][1]));
 		plot.getLayer("dead").addPoint(new GPoint(deadOverTime[count][0], deadOverTime[count][1]));
-
+		
+		
 		count++;
 		
 	};
