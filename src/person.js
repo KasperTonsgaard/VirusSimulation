@@ -1,23 +1,23 @@
-function checkCollisionWithBalls() {
+function checkCollisionWithPerson() {
   if (simutlationRunning) {
     
-    for(let i = 0; i < balls.length; i++){
-      if(balls[i].infected){
-        for(let y = 0; y < balls.length; y++){
-          if(balls[y].infected == false && balls[y].dead == false){
-            distance = sqrt(((balls[y].x - balls[i].x)**2) + (((balls[y].y - balls[i].y)**2)));
-            if(distance < (balls[i].size + balls[y].size)/2){
-              if(balls[y].doctor){
-                balls[i].cured = true;
-                balls[i].infected = false;
-                balls[i].color = [0, 255, 0];
+    for(let i = 0; i < people.length; i++){
+      if(people[i].infected){
+        for(let y = 0; y < people.length; y++){
+          if(people[y].infected == false && people[y].dead == false){
+            distance = sqrt(((people[y].x - people[i].x)**2) + (((people[y].y - people[i].y)**2)));
+            if(distance < (people[i].size + people[y].size)/2){
+              if(people[y].doctor){
+                people[i].cured = true;
+                people[i].infected = false;
+                people[i].color = [0, 255, 0];
               }
               rand = random(0, 250);
-              if (rand < balls[y].infectionRate) {
-                if(balls[y].cured == false && balls[y].doctor == false){
-                  balls[y].infected = true;
-                  balls[y].timeInfected = time;
-                  balls[y].color = [255, 0, 0];  
+              if (rand < people[y].infectionRate) {
+                if(people[y].cured == false && people[y].doctor == false){
+                  people[y].infected = true;
+                  people[y].timeInfected = time;
+                  people[y].color = [255, 0, 0];  
                 }
               }
             }
@@ -34,7 +34,7 @@ function spawnPeople(){
   
   // Spawn people
   for(let i = 0; i < amount; i++){
-      append(balls, new ball(random(50, canvasParrentSize[0] - 50), random(50, canvasHeight - 50), random(7,10), false, infectionRate, false));
+      append(people, new person(random(50, canvasParrentSize[0] - 50), random(50, canvasHeight - 50), random(7,10), false, infectionRate, false));
     }
 
   // Make random people infected
@@ -45,16 +45,16 @@ function spawnPeople(){
     for(let i = 0; i < startInfected; i++){
         while(true){
             randomPerson = floor(random(amount));
-            if(balls[randomPerson].infected == true || balls[randomPerson].doctor == true){
+            if(people[randomPerson].infected == true || people[randomPerson].doctor == true){
                 randomPerson = floor(random(amount));
             } else {
                 break;
             }
           }
-          if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
-            balls[randomPerson].infected = true;
-            balls[randomPerson].timeInfected = time;
-            balls[randomPerson].color = [255, 0, 0];
+          if(people[randomPerson].infected == false && people[randomPerson].doctor == false){
+            people[randomPerson].infected = true;
+            people[randomPerson].timeInfected = time;
+            people[randomPerson].color = [255, 0, 0];
           }
         }
       
@@ -62,16 +62,16 @@ function spawnPeople(){
       for(let i = 0; i < startDoctors; i++){
           while(true){
             randomPerson = floor(random(amount));
-            if(balls[randomPerson].infected == true || balls[randomPerson].doctor == true){
+            if(people[randomPerson].infected == true || people[randomPerson].doctor == true){
                 randomPerson = floor(random(amount));
             } else {
                 break;
             }
           }
           
-          if(balls[randomPerson].infected == false && balls[randomPerson].doctor == false){
-            balls[randomPerson].doctor = true;
-            balls[randomPerson].color = [42,127,186];
+          if(people[randomPerson].infected == false && people[randomPerson].doctor == false){
+            people[randomPerson].doctor = true;
+            people[randomPerson].color = [42,127,186];
           }
         }
     }
@@ -98,7 +98,7 @@ function checkInfectionTime(person){
 
 
 
-class ball {
+class person {
   
   constructor(x, y, size, infected, infectionRate, doctor){
     this.x = x;
@@ -130,16 +130,16 @@ class ball {
     if(this.dead == false){
         if(this.doctor){
             this.shortestDistance = null;
-            for(let i = 0; i < balls.length; i++){
-                if(balls[i].infected){
-                    distance = sqrt(((this.x - balls[i].x)**2) + (((this.y - balls[i].y)**2)));
+            for(let i = 0; i < people.length; i++){
+                if(people[i].infected){
+                    distance = sqrt(((this.x - people[i].x)**2) + (((this.y - people[i].y)**2)));
                     if(this.shortestDistance == null){
                         this.shortestDistance = distance;
-                        this.shortestDistancePerson = balls[i];
+                        this.shortestDistancePerson = people[i];
                     } else {
                         if(distance < this.shortestDistance){
                             this.shortestDistance = distance
-                            this.shortestDistancePerson = balls[i];
+                            this.shortestDistancePerson = people[i];
                         }
                     }
                 }

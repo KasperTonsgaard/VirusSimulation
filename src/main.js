@@ -1,7 +1,7 @@
 canvasHeight = 500;
 
 simutlationRunning = true;
-balls = [];
+people = [];
 healthyOverTime = [0,0];
 infectedOverTime = [0,0];
 curedOverTime = [0,0];
@@ -44,29 +44,29 @@ function draw() {
   background(70); 
 
   // Collision
-  checkCollisionWithBalls();
+  checkCollisionWithPerson();
 
   countAmountInfected = 0;
   countAmountHealthy = 0;
   countAmountCured = 0;
   countAmountDead = 0;
-  for(let i = 0; i < balls.length; i++){
-    if(balls[i].infected == true){
+  for(let i = 0; i < people.length; i++){
+    if(people[i].infected == true){
       countAmountInfected += 1;
-    } else if(balls[i].cured == true){
+    } else if(people[i].cured == true){
       countAmountCured += 1;
-    } else if(balls[i].dead == true){
+    } else if(people[i].dead == true){
       countAmountDead += 1;
     } else {
       countAmountHealthy += 1;
     }
     
-    balls[i].draw();
+    people[i].draw();
     
     if(simutlationRunning){
-      checkInfectionTime(balls[i]);
-      balls[i].move();
-      balls[i].collisionWithWall();  
+      checkInfectionTime(people[i]);
+      people[i].move();
+      people[i].collisionWithWall();  
     }
   }
 

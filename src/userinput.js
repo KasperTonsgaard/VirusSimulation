@@ -37,7 +37,7 @@ function resetSimulation() {
   startstopButton.addClass("btn-success");
   startstopButton.addClass("reset-sim");
 
-  balls = [];
+  people = [];
   healthyOverTime = [0,0];
   infectedOverTime = [0,0];
   curedOverTime = [0,0];
