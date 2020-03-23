@@ -17,19 +17,23 @@ Ellers kan dette repository nemt klones og køres ved at åbne index.html i src 
 - ~~Lav så personer dør eller overlever efter et bestemt antal tid, ift. deres imunforsvar(immunity) (DONE v1.0)~~
 - ~~Hvis de dør skal de blive sorte og stå stille (DONE v1.0)~~
 - ~~Hvis de overlever skal de blive grønne og fortsætte rundt (DONE v1.0)~~
+- ~~Lav hygiejne og fools simulation (DONE v2.0)~~
+- ~~Graf remake i Chart.js (DONE v2.0)~~ 
 
 **Kasper:**
 - ~~User Instrikethrough textput. Sliders og knapper (DONE v1.0)~~
 - ~~Statestik med tal (DONE v1.0)~~
+- ~~Muligvis lav sektion til sygdom/virus indstillinger så der ikke er for mange indstillinger (DONE v2.0)~~
+- ~~Lav hygiejne og fools UI(DONE v2.0)~~
+- ~~Lav informations card(DONE v2.0)~~
+- ~~Lav tooltips til sliders(DONE v2.0)~~
+- ~~UI remake (DONE v2.0)~~ 
 
 **Fælles:**
-- ~~Grafiski Statestik (DONE v1.0)~~
+- ~~ Grafica.js Statestik (DONE v1.0)~~
 
 **Udvidelser:**
-- Lav hygiejne
 - Hvor langt væk man holder sig fra hinanden
-- Number of fools
-- Muligvis lav sektion til sygdom/virus indstillinger så der ikke er for mange indstillinger
 - Lav karantæne? måske koble det med doctor?
 
 

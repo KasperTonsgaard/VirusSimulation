@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/custom-css-bootstrap-magic-2020-03-23.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     
     
     <title>Virus Simulation</title>
   </head>
-  <body>
+  <body style="background-color: #2d4473;">
     <div id="main">
-      <h1>Virus Simulation</h1>
-      <h3>by: Luccas Sukul and Kasper Tonsgaard</h3>
+      <h1 class="text-white">Virus Simulation v2.0</h1>
+      <h3 class="text-white">Made by: Luccas Sukul and Kasper Tonsgaard</h3>
       <br>
       <div class="row">
         <div class="col-md-12 col-lg-7"><!-- Simulation card-->
-          <div class="card text-white bg-secondary mb-3">
+          <div class="card  mb-3" style="background-color: #E9ECF2;">
             <b><div class="card-header">Simulation</div></b>
             <div class="card-body" id="canvas-parrent">
               <div id="canvas-holder"></div>
@@ -27,7 +32,7 @@
         </div>
         
         <div class="col-md-12 col-lg-5"><!-- Edit Simulation card-->       
-          <div class="card text-white bg-secondary mb-3">
+          <div class="card  mb-3" style="background-color: #E9ECF2;">
             <b><div class="card-header">Edit Simulation</div></b>
             <div class="card-body">
               <button class="btn btn-primary" id="startstopButton">Pause Simulation</button>
@@ -35,40 +40,127 @@
               
               <hr>
 
-              <p>Simulation Size (amount of people): <span id="simulationSizeValue"></span></p>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="1000" value="500" class="slider" id="simulationSizeSlider">
-              </div>
+              <div class="accordion" id="settingsAccordion">
 
-              <hr>
+                <!-- Simulation Settings -->
+                <div class="card">
+                  <div class="card-header" id="simulationSettingsHeading">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#simulationSettingsCollapse" aria-expanded="true" aria-controls="simulationSettingsCollapse">
+                        Simulation Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control basic simulation settings">help</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="simulationSettingsCollapse" class="collapse show" aria-labelledby="simulationSettingsHeading" data-parent="#settingsAccordion">
+                    <div class="card-body">
 
-              <p>Number of people infected from start: <span id="peopleInfectedFromStartValue"></span></p>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="1000" value="1" class="slider" id="peopleInfectedFromStartSlider">
-              </div>
-              <p>Infection Rate: <span id="infectionRateValue"></span>%</p>
-              <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="20" class="slider" id="infectionRateSlider">
-              </div>
-              <p>Deadlyness: <span id="deadlynessValue"></span>%</p>
-              <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="5" class="slider" id="deadlynessSlider">
-              </div>
+                      <p>
+                        Simulation Size (amount of people): 
+                        <span id="simulationSizeValue"></span> 
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider ajusts how many people are in the simulation">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="1" max="3001" value="500" class="slider" id="simulationSizeSlider">
+                      </div>
 
-              <hr>
+                      <p>
+                        Number of people infected from start: 
+                        <span id="peopleInfectedFromStartValue"></span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is infected from the start">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="1" max="1000" value="1" class="slider" id="peopleInfectedFromStartSlider">
+                      </div>
 
-              <p>Number of Docters: <span id="numberOfDoctersValue"></span></p>
-              <div class="slidecontainer">
-                <input type="range" min="0" max="100" value="0" class="slider" id="numberOfDoctersSlider">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Virus Settings -->
+                <div class="card">
+                  <div class="card-header" id="virusSettingsHeading">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#virusSettingsCollapse" aria-expanded="false" aria-controls="virusSettingsCollapse">
+                        Virus Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control properties of the virus">help</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="virusSettingsCollapse" class="collapse" aria-labelledby="virusSettingsHeading" data-parent="#settingsAccordion">
+                    <div class="card-body">
+                    
+                      <p>
+                        Infection Rate: 
+                        <span id="infectionRateValue"></span>%
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how likely the virus is to spread from one person to another when they are passing each other">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="70" class="slider" id="infectionRateSlider">
+                      </div>
+        
+                      <p>
+                        Deadlyness: 
+                        <span id="deadlynessValue"></span>%
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how likely people are to die when they have the virus">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="0" max="100" value="5" class="slider" id="deadlynessSlider">
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Environment Settings -->
+                <div class="card">
+                  <div class="card-header" id="environmentSettingsHeading">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#environmentSettingsCollapse" aria-expanded="false" aria-controls="environmentSettingsCollapse">
+                        Environment Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control the environment and how people are behaving">help</span>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="environmentSettingsCollapse" class="collapse" aria-labelledby="environmentSettingsHeading" data-parent="#settingsAccordion">
+                    <div class="card-body">
+                    
+                      <p>
+                        Number of Docters: 
+                        <span id="numberOfDoctersValue"></span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is a doctor. The doctor goes around and helps the infected giving them a better chance of surviving">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="numberOfDoctersSlider">
+                      </div>
+                      
+                      <p>
+                        Peoples Hygiene: 
+                        <span id="peoplesHygieneValue"></span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls people's hygiene awareness. This will help prevent the infection rate">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="peoplesHygieneSlider">
+                      </div>
+                      
+                      <p>
+                        Number of Fools: 
+                        <span id="numberOfFoolsValue"></span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is a fool and doesn't respect hygiene">help</span>
+                      </p>
+                      <div class="slidecontainer">
+                        <input type="range" min="0" max="1000" value="0" class="slider" id="numberOfFoolsSlider">
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
-              
 
             </div>
           </div>
-        </div>
-
+        </div>        
+        
         <div class="col-md-12 col-lg-5 order-lg-last"><!-- Statistics card-->
-          <div class="card text-white bg-secondary mb-3">
+          <div class="card mb-3" style="background-color: #E9ECF2;">
             <b><div class="card-header">Statistics</div></b>
             <div class="card-body">
               <div class="row">
@@ -84,91 +176,185 @@
               </div>
             </div>
           </div>
-
+  
         </div>
 
         <div class="col-md-12 col-lg-7"><!-- Graph card-->
-          <div class="card text-white bg-secondary mb-3">
+          <div class="card mb-3" style="background-color: #E9ECF2;">
             <b><div class="card-header">Graph</div></b>
             <div class="card-body" id="graph-parrent">
               <div class="table-responsive">
                 <table class="table">
                   <thead class="thead-light">
                     <tr>
+                      <th scope="col">People Infected</th>
                       <th scope="col">People Healthy</th>
                       <th scope="col">People Cured</th>
-                      <th scope="col">People Infected</th>
                       <th scope="col">People Dead</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <th style="background-color: #c8c8c8;"></th>
-                      <td style="background-color: #00ff00;"></td>
-                      <td style="background-color: #ff0000;"></td>
-                      <td style="background-color: #000000;"></td>
+                      <td style="background-color: #9e3856;"></td>
+                      <th style="background-color: #868e96;"></th>
+                      <td style="background-color: #39a638;"></td>
+                      <td style="background-color: #212529;"></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div id="graph-holder"></div>
+
+              <nav>
+              <div class="nav nav-tabs" id="graph-tab" role="tablist">
+                <a class="nav-item nav-link active" id="graph-chartjs-tab" data-toggle="tab" href="#graph-chartjs" role="tab" aria-controls="graph-chartjs" aria-selected="true">Chart.js</a>
+                <a class="nav-item nav-link" id="graph-graficajs-tab" data-toggle="tab" href="#graph-graficajs" role="tab" aria-controls="graph-graficajs" aria-selected="false">Grafica.js</a>
+              </div>
+            </nav>
+            <div class="tab-content" id="graph-tabContent">
+              <div class="tab-pane fade show active" id="graph-chartjs" role="tabpanel" aria-labelledby="graph-chartjs-tab">
+                <canvas id="graph-canvas"></canvas>
+              </div>
+              <div class="tab-pane fade" id="graph-graficajs" role="tabpanel" aria-labelledby="graph-graficajs-tab">
+                <div id="graph-holder"></div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
+      
+
+      <hr class="my-5" style="background-color: white; height: 5px;">
+
+      <h1 class="text-white">Information about Coronavirus (danish)</h1>
+      <br>
+
+      <div class="row">
+
+        <div class="col-md-12 col-lg-7"><!-- information card-->
+          <div class="card mb-3" style="background-color: #E9ECF2;">
+            <b><div class="card-header">Information</div></b>
+            <div class="card-body">
+              <h1>Corona</h1>
+              <p>
+                Coronavirus er en familie af virus, der kan være årsag til milde forkølelser, men også til alvorlige infektioner i luftvejene.
+                <br><br>
+                Udbruddet med den ny coronavirus startede i Kina i december 2019, men bredte sig hurtigt til omkringliggende lande og herefter til resten af verden, herunder også Danmark. Den 11. marts 2020 erklærede Verdenssundhedsorganisationen (WHO) pandemi, det vil sige en epidemi på ﬂere kontinenter.
+                <br><br>
+                Virus smitter fra person til person via dråber. Dråber spreder sig i luften ved hoste eller nys i en afstand på 1-2 meter, hvorefter de hurtigt falder til jorden. Virus bliver således ikke hængende i luften. Virus kan ikke smitte gennem huden, fx på hænder, og smitter kun gennem slimhinder, typisk i næse, mund og øjne.
+                <br><br>
+                <a href="https://www.sst.dk/da/corona">Læs meget mere på Sundhedsstyrelsens Hjemmeside</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-5">
+          <div class="card mb-3" style="background-color: #E9ECF2;">
+            <b><div class="card-header">Information</div></b>
+            <div class="card-body">
+
+              <div class="embed-responsive embed-responsive-16by9">
+                <video width="700" controls autoplay loop>
+                  <source src="videos/corona-info1.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
 
     </div>
 
     
+    
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <!-- P5 libary -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="js/graphLibrary.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+
+    <!-- JS init for tooltip and sliders -->
     <script>
+      //Tooltips
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+
       // Code for fancy slider
-      var simulationSizeSlider = document.getElementById("simulationSizeSlider");
-      var simulationSizeValue = document.getElementById("simulationSizeValue");
+      const simulationSizeSlider = document.getElementById("simulationSizeSlider");
+      const simulationSizeValue = document.getElementById("simulationSizeValue");
       simulationSizeValue.innerHTML = simulationSizeSlider.value;
       simulationSizeSlider.oninput = function() {
         simulationSizeValue.innerHTML = this.value;
       }
 
-      var peopleInfectedFromStartSlider = document.getElementById("peopleInfectedFromStartSlider");
-      var peopleInfectedFromStartValue = document.getElementById("peopleInfectedFromStartValue");
+      const peopleInfectedFromStartSlider = document.getElementById("peopleInfectedFromStartSlider");
+      const peopleInfectedFromStartValue = document.getElementById("peopleInfectedFromStartValue");
       peopleInfectedFromStartValue.innerHTML = peopleInfectedFromStartSlider.value;
       peopleInfectedFromStartSlider.oninput = function() {
         peopleInfectedFromStartValue.innerHTML = this.value;
       }
 
-      var infectionRateSlider = document.getElementById("infectionRateSlider");
-      var infectionRateValue = document.getElementById("infectionRateValue");
+      const infectionRateSlider = document.getElementById("infectionRateSlider");
+      const infectionRateValue = document.getElementById("infectionRateValue");
       infectionRateValue.innerHTML = infectionRateSlider.value;
       infectionRateSlider.oninput = function() {
         infectionRateValue.innerHTML = this.value;
       }
 
-      var numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
-      var numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
-      numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
-      numberOfDoctersSlider.oninput = function() {
-        numberOfDoctersValue.innerHTML = this.value;
-      }
-
-
-      var deadlynessSlider = document.getElementById("deadlynessSlider");
-      var deadlynessValue = document.getElementById("deadlynessValue");
+      const deadlynessSlider = document.getElementById("deadlynessSlider");
+      const deadlynessValue = document.getElementById("deadlynessValue");
       deadlynessValue.innerHTML = deadlynessSlider.value;
       deadlynessSlider.oninput = function() {
         deadlynessValue.innerHTML = this.value;
       }
 
+      const numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
+      const numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
+      numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
+      numberOfDoctersSlider.oninput = function() {
+        numberOfDoctersValue.innerHTML = this.value;
+      }
 
-      </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
-    <script src="graphLibrary.js"></script>
+      const numberOfFoolsSlider = document.getElementById("numberOfFoolsSlider");
+      const numberOfFoolsValue = document.getElementById("numberOfFoolsValue");
+      numberOfFoolsValue.innerHTML = numberOfFoolsSlider.value;
+      numberOfFoolsSlider.oninput = function() {
+        numberOfFoolsValue.innerHTML = this.value;
+      }
 
-    <script src="person.js"></script>
-    <script src="userinput.js"></script>
-    <script src="statistics.js"></script>
-    <script src="defaultPlot.js"></script>
-    <script src="main.js"></script>
+      const peoplesHygieneSlider = document.getElementById("peoplesHygieneSlider");
+      const peoplesHygieneValue = document.getElementById("peoplesHygieneValue");
+      peoplesHygieneValue.innerHTML = peoplesHygieneSlider.value;
+      peoplesHygieneSlider.oninput = function() {
+        peoplesHygieneValue.innerHTML = this.value;
+      }
+
+
+    </script>
+
+    <!-- Our simulation code -->
+    <script src="js/person.js"></script>
+    <script src="js/userinput.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/defaultPlot.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
