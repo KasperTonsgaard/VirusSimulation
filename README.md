@@ -30,7 +30,7 @@ Ellers kan dette repository nemt klones og køres ved at åbne index.html i src 
 - ~~UI remake (DONE v2.0)~~ 
 
 **Fælles:**
-- ~~ Grafica.js Statestik (DONE v1.0)~~
+- ~~Grafica.js Statestik (DONE v1.0)~~
 
 **Udvidelser:**
 - Hvor langt væk man holder sig fra hinanden
