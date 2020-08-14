@@ -11,7 +11,7 @@ function setupInputHandlers() {
 function startstopButtonPressed() {
   if (simutlationRunning) {
     simutlationRunning = false;
-    startstopButton.html("Unpause Simutlation");
+    startstopButton.html("Start Simutlation");
     startstopButton.removeClass("btn-primary");
     startstopButton.addClass("btn-success");
   } else {
@@ -24,7 +24,7 @@ function startstopButtonPressed() {
     }
 
     simutlationRunning = true;
-    startstopButton.html("Pause Simutlation");
+    startstopButton.html("Stop Simutlationen");
     startstopButton.removeClass("btn-success");
     startstopButton.addClass("btn-primary");
   }

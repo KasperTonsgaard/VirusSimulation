@@ -19,7 +19,7 @@
   <body style="background-color: #2d4473;">
     <div id="main">
       <h1 class="text-white">Virus Simulation v2.0</h1>
-      <h3 class="text-white">Made by: Luccas Sukul and Kasper Tonsgaard</h3>
+      <h3 class="text-white">Lavet af: Luccas Sukul og Kasper Tonsgaard</h3>
       <br>
       <div class="row">
         <div class="col-md-12 col-lg-7"><!-- Simulation card-->
@@ -33,10 +33,10 @@
         
         <div class="col-md-12 col-lg-5"><!-- Edit Simulation card-->       
           <div class="card  mb-3" style="background-color: #E9ECF2;">
-            <b><div class="card-header">Edit Simulation</div></b>
+            <b><div class="card-header">Rediger Simulationen</div></b>
             <div class="card-body">
-              <button class="btn btn-primary" id="startstopButton">Pause Simulation</button>
-              <button class="btn btn-danger" id="resetButton">Reset Simulation</button>
+              <button class="btn btn-primary" id="startstopButton">Stop Simulationen</button>
+              <button class="btn btn-danger" id="resetButton">Genstart Simulationen</button>
               
               <hr>
 
@@ -47,7 +47,7 @@
                   <div class="card-header" id="simulationSettingsHeading">
                     <h2 class="mb-0">
                       <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#simulationSettingsCollapse" aria-expanded="true" aria-controls="simulationSettingsCollapse">
-                        Simulation Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control basic simulation settings">help</span>
+                        Simulations Parametre <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Her kan du ændrer de basale simulations parametre">help</span>
                       </button>
                     </h2>
                   </div>
@@ -55,18 +55,18 @@
                     <div class="card-body">
 
                       <p>
-                        Simulation Size (amount of people): 
+                        Simulations størrelse (antallet af mennesker): 
                         <span id="simulationSizeValue"></span> 
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider ajusts how many people are in the simulation">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer på hvor mange mennesker der er i simulationen">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="1" max="3001" value="500" class="slider" id="simulationSizeSlider">
                       </div>
 
                       <p>
-                        Number of people infected from start: 
+                        Antallet af smittede fra starten: 
                         <span id="peopleInfectedFromStartValue"></span>
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is infected from the start">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer antallet der starter med at være smittet når simulationen starter">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="1" max="1000" value="1" class="slider" id="peopleInfectedFromStartSlider">
@@ -81,7 +81,7 @@
                   <div class="card-header" id="virusSettingsHeading">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#virusSettingsCollapse" aria-expanded="false" aria-controls="virusSettingsCollapse">
-                        Virus Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control properties of the virus">help</span>
+                        Virus Parametre <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Her kan du ændrer på virussens paramentre">help</span>
                       </button>
                     </h2>
                   </div>
@@ -89,18 +89,18 @@
                     <div class="card-body">
                     
                       <p>
-                        Infection Rate: 
+                        Smitte Sandsynlighed: 
                         <span id="infectionRateValue"></span>%
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how likely the virus is to spread from one person to another when they are passing each other">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer på hvor sansyneligt det er at give virussen videre når de går ind i hinanden">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="1" max="100" value="70" class="slider" id="infectionRateSlider">
                       </div>
         
                       <p>
-                        Deadlyness: 
+                        Dødlighed: 
                         <span id="deadlynessValue"></span>%
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how likely people are to die when they have the virus">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer på sansyneligheden for at man dør når man har haft virussen">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="0" max="100" value="5" class="slider" id="deadlynessSlider">
@@ -115,13 +115,13 @@
                   <div class="card-header" id="environmentSettingsHeading">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#environmentSettingsCollapse" aria-expanded="false" aria-controls="environmentSettingsCollapse">
-                        Environment Settings <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Settings to control the environment and how people are behaving">help</span>
+                        Menneskelige Parametre <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Her kan du ændrer på hvordan menneskerne i simualtionen opføerer sig (primært ift. hygiejne)">help</span>
                       </button>
                     </h2>
                   </div>
                   <div id="environmentSettingsCollapse" class="collapse" aria-labelledby="environmentSettingsHeading" data-parent="#settingsAccordion">
                     <div class="card-body">
-                    
+
                       <p>
                         Number of Docters: 
                         <span id="numberOfDoctersValue"></span>
@@ -132,18 +132,18 @@
                       </div>
                       
                       <p>
-                        Peoples Hygiene: 
+                        Hygiejne: 
                         <span id="peoplesHygieneValue"></span>
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls people's hygiene awareness. This will help prevent the infection rate">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer på hvor opmærksomme folk er på deres hygiejne. Dette gør at de har sværer ved at blive smittet og smitte andre">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="0" max="100" value="0" class="slider" id="peoplesHygieneSlider">
                       </div>
                       
                       <p>
-                        Number of Fools: 
+                        Antallet af Fjolser: 
                         <span id="numberOfFoolsValue"></span>
-                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is a fool and doesn't respect hygiene">help</span>
+                        <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="Denne slider ændrer på antallet af mennesker der ikke tænker på hygiejne og derfor har større sansynelighed for at blive smittet og smitte andre. Fjolser bliver vist med en brun prik">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="0" max="1000" value="0" class="slider" id="numberOfFoolsSlider">
@@ -161,17 +161,17 @@
         
         <div class="col-md-12 col-lg-5 order-lg-last"><!-- Statistics card-->
           <div class="card mb-3" style="background-color: #E9ECF2;">
-            <b><div class="card-header">Statistics</div></b>
+            <b><div class="card-header">Statestikker</div></b>
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <p>People Healthy: <span id="amountHealthyValue"></span></p>
-                  <p>People Cured: <span id="amountCuredValue"></span></p>
-                  <p>People Infected: <span id="amountInfectedValue"></span></p>
-                  <p>People Dead: <span id="amountDeadValue"></span></p>
+                  <p>Antal Raske: <span id="amountHealthyValue"></span></p>
+                  <p>Antal Helbredte: <span id="amountCuredValue"></span></p>
+                  <p>Antal Smittede: <span id="amountInfectedValue"></span></p>
+                  <p>Antal Døde: <span id="amountDeadValue"></span></p>
                 </div>
                 <div class="col">
-                  <p>Days Elapsed: <span id="daysElapsedValue"></span></p>
+                  <p>Dag: <span id="daysElapsedValue"></span></p>
                 </div>
               </div>
             </div>
@@ -181,16 +181,16 @@
 
         <div class="col-md-12 col-lg-7"><!-- Graph card-->
           <div class="card mb-3" style="background-color: #E9ECF2;">
-            <b><div class="card-header">Graph</div></b>
+            <b><div class="card-header">Graf</div></b>
             <div class="card-body" id="graph-parrent">
               <div class="table-responsive">
                 <table class="table">
                   <thead class="thead-light">
                     <tr>
-                      <th scope="col">People Infected</th>
-                      <th scope="col">People Healthy</th>
-                      <th scope="col">People Cured</th>
-                      <th scope="col">People Dead</th>
+                      <th scope="col">Antal Smittede</th>
+                      <th scope="col">Antal Raske</th>
+                      <th scope="col">Antal Helbredte</th>
+                      <th scope="col">Antal Døde</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -226,7 +226,7 @@
 
       <hr class="my-5" style="background-color: white; height: 5px;">
 
-      <h1 class="text-white">Information about Coronavirus (danish)</h1>
+      <h1 class="text-white">Information om Coronavirus</h1>
       <br>
 
       <div class="row">

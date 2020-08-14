@@ -109,7 +109,7 @@ function spawnPeople(){
 
 function checkInfectionTime(person){
     durationInfected = time - person.timeInfected;
-    if(person.immunity <= durationInfected && person.infected && person.infected){
+    if(person.immunity <= durationInfected && person.infected){
         fate = random(100);
         if(fate < deadlyness){
             person.color = [0, 0, 0];
