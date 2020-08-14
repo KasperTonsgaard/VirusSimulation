@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
+  <head>    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-175459090-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-175459090-1');
+    </script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/custom-css-bootstrap-magic-2020-03-23.css">
     
@@ -121,15 +130,15 @@
                   </div>
                   <div id="environmentSettingsCollapse" class="collapse" aria-labelledby="environmentSettingsHeading" data-parent="#settingsAccordion">
                     <div class="card-body">
-
-                      <p>
+                    
+                      <!-- <p>
                         Number of Docters: 
                         <span id="numberOfDoctersValue"></span>
                         <span class="material-icons" data-toggle="tooltip" data-placement="auto" title="" data-original-title="This slider controls how many of the people in the simulation is a doctor. The doctor goes around and helps the infected giving them a better chance of surviving">help</span>
                       </p>
                       <div class="slidecontainer">
                         <input type="range" min="0" max="100" value="0" class="slider" id="numberOfDoctersSlider">
-                      </div>
+                      </div> -->
                       
                       <p>
                         Hygiejne: 
@@ -207,16 +216,16 @@
               <nav>
               <div class="nav nav-tabs" id="graph-tab" role="tablist">
                 <a class="nav-item nav-link active" id="graph-chartjs-tab" data-toggle="tab" href="#graph-chartjs" role="tab" aria-controls="graph-chartjs" aria-selected="true">Chart.js</a>
-                <a class="nav-item nav-link" id="graph-graficajs-tab" data-toggle="tab" href="#graph-graficajs" role="tab" aria-controls="graph-graficajs" aria-selected="false">Grafica.js</a>
+                <!-- <a class="nav-item nav-link" id="graph-graficajs-tab" data-toggle="tab" href="#graph-graficajs" role="tab" aria-controls="graph-graficajs" aria-selected="false">Grafica.js</a> -->
               </div>
             </nav>
             <div class="tab-content" id="graph-tabContent">
               <div class="tab-pane fade show active" id="graph-chartjs" role="tabpanel" aria-labelledby="graph-chartjs-tab">
                 <canvas id="graph-canvas"></canvas>
               </div>
-              <div class="tab-pane fade" id="graph-graficajs" role="tabpanel" aria-labelledby="graph-graficajs-tab">
+              <!-- <div class="tab-pane fade" id="graph-graficajs" role="tabpanel" aria-labelledby="graph-graficajs-tab">
                 <div id="graph-holder"></div>
-              </div>
+              </div> -->
             </div>
             </div>
           </div>
@@ -325,12 +334,12 @@
         deadlynessValue.innerHTML = this.value;
       }
 
-      const numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
-      const numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
-      numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
-      numberOfDoctersSlider.oninput = function() {
-        numberOfDoctersValue.innerHTML = this.value;
-      }
+      // const numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
+      // const numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
+      // numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
+      // numberOfDoctersSlider.oninput = function() {
+      //   numberOfDoctersValue.innerHTML = this.value;
+      // }
 
       const numberOfFoolsSlider = document.getElementById("numberOfFoolsSlider");
       const numberOfFoolsValue = document.getElementById("numberOfFoolsValue");
@@ -353,7 +362,7 @@
     <script src="js/person.js"></script>
     <script src="js/userinput.js"></script>
     <script src="js/statistics.js"></script>
-    <script src="js/defaultPlot.js"></script>
+    <!-- <script src="js/defaultPlot.js"></script> -->
     <script src="js/graph.js"></script>
     <script src="js/main.js"></script>
   </body>
