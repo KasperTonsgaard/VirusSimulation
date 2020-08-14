@@ -35,6 +35,8 @@ function setup() {
   
   // graph = new p5(defaultPlotSketch, "graph-holder");
 
+  resetSimulation();
+
   setupInputHandlers();
 
   getSliderSettings();
