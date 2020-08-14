@@ -1,6 +1,6 @@
 canvasHeight = 500;
 
-simutlationRunning = true;
+simutlationRunning = false;
 people = [];
 healthyOverTime = [0,0];
 infectedOverTime = [0,0];
