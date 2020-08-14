@@ -33,7 +33,7 @@ function setup() {
   canvas = createCanvas(canvasParrentSize[0], 500);
   canvas.parent('canvas-holder');
   
-  graph = new p5(defaultPlotSketch, "graph-holder");
+  // graph = new p5(defaultPlotSketch, "graph-holder");
 
   setupInputHandlers();
 
@@ -86,10 +86,10 @@ function draw() {
     updateGraph();
   }
 
-  append(healthyOverTime, [time, amountHealthy]);
-  append(infectedOverTime, [time, amountInfected]);
-  append(curedOverTime, [time, amountCured]);
-  append(deadOverTime, [time, amountDead]);
+  // append(healthyOverTime, [time, amountHealthy]);
+  // append(infectedOverTime, [time, amountInfected]);
+  // append(curedOverTime, [time, amountCured]);
+  // append(deadOverTime, [time, amountDead]);
 
 }
 
@@ -106,9 +106,9 @@ function getCanvasParrentSize() {
   return [width, height];
 }
 
-function getGraphParrentSize() {
-  let parrent = select('#graph-parrent');
-  let width = parrent.width - 40;
-  let height = parrent.height - 40;
-  return [width, height];
-}
+// function getGraphParrentSize() {
+//   let parrent = select('#graph-parrent');
+//   let width = parrent.width - 40;
+//   let height = parrent.height - 40;
+//   return [width, height];
+// }

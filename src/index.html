@@ -216,16 +216,16 @@
               <nav>
               <div class="nav nav-tabs" id="graph-tab" role="tablist">
                 <a class="nav-item nav-link active" id="graph-chartjs-tab" data-toggle="tab" href="#graph-chartjs" role="tab" aria-controls="graph-chartjs" aria-selected="true">Chart.js</a>
-                <a class="nav-item nav-link" id="graph-graficajs-tab" data-toggle="tab" href="#graph-graficajs" role="tab" aria-controls="graph-graficajs" aria-selected="false">Grafica.js</a>
+                <!-- <a class="nav-item nav-link" id="graph-graficajs-tab" data-toggle="tab" href="#graph-graficajs" role="tab" aria-controls="graph-graficajs" aria-selected="false">Grafica.js</a> -->
               </div>
             </nav>
             <div class="tab-content" id="graph-tabContent">
               <div class="tab-pane fade show active" id="graph-chartjs" role="tabpanel" aria-labelledby="graph-chartjs-tab">
                 <canvas id="graph-canvas"></canvas>
               </div>
-              <div class="tab-pane fade" id="graph-graficajs" role="tabpanel" aria-labelledby="graph-graficajs-tab">
+              <!-- <div class="tab-pane fade" id="graph-graficajs" role="tabpanel" aria-labelledby="graph-graficajs-tab">
                 <div id="graph-holder"></div>
-              </div>
+              </div> -->
             </div>
             </div>
           </div>
@@ -334,12 +334,12 @@
         deadlynessValue.innerHTML = this.value;
       }
 
-      const numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
-      const numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
-      numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
-      numberOfDoctersSlider.oninput = function() {
-        numberOfDoctersValue.innerHTML = this.value;
-      }
+      // const numberOfDoctersSlider = document.getElementById("numberOfDoctersSlider");
+      // const numberOfDoctersValue = document.getElementById("numberOfDoctersValue");
+      // numberOfDoctersValue.innerHTML = numberOfDoctersSlider.value;
+      // numberOfDoctersSlider.oninput = function() {
+      //   numberOfDoctersValue.innerHTML = this.value;
+      // }
 
       const numberOfFoolsSlider = document.getElementById("numberOfFoolsSlider");
       const numberOfFoolsValue = document.getElementById("numberOfFoolsValue");
@@ -362,7 +362,7 @@
     <script src="js/person.js"></script>
     <script src="js/userinput.js"></script>
     <script src="js/statistics.js"></script>
-    <script src="js/defaultPlot.js"></script>
+    <!-- <script src="js/defaultPlot.js"></script> -->
     <script src="js/graph.js"></script>
     <script src="js/main.js"></script>
   </body>
