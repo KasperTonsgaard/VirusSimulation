@@ -5,28 +5,28 @@ var myChart = new Chart(ctx, {
     data: {
         datasets: [
             {
-            label: 'Infected',
+            label: 'Smittede',
             data: [],
             backgroundColor: ['rgba(158, 56, 86, 0.5)'],
             borderColor: ['rgba(158, 56, 86, 1)'],
             pointRadius: 1,
             fill: "start",
         },   {
-            label: 'Healthy',
+            label: 'Raske',
             data: [],
             backgroundColor: ['rgba(134, 142, 150, 0.5)'],
             borderColor: ['rgba(134, 142, 150, 1)'],
             pointRadius: 1,
             fill: "-1",
         },   {
-            label: 'Dead',
+            label: 'Døde',
             data: [],
             backgroundColor: ['rgba(33, 37, 41, 0.8)'],
             borderColor: ['rgba(33, 37, 41, 1)'],
             pointRadius: 1,
             fill: "-1",
         },   {
-            label: 'Cured',
+            label: 'Helbredte',
             data: [],
             backgroundColor: ['rgba(57, 166, 56, 0.5)'],
             borderColor: ['rgba(57, 166, 56, 1)'],
