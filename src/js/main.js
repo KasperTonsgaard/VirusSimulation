@@ -1,6 +1,6 @@
 canvasHeight = 500;
 
-simutlationRunning = false;
+simutlationRunning = true;
 people = [];
 healthyOverTime = [0,0];
 infectedOverTime = [0,0];
@@ -35,10 +35,9 @@ function setup() {
   
   // graph = new p5(defaultPlotSketch, "graph-holder");
 
-  resetSimulation();
-
+  
   setupInputHandlers();
-
+  
   getSliderSettings();
   spawnPeople();
 }

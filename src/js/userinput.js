@@ -50,8 +50,8 @@ function resetSimulation() {
 
   resetGraph();
 
-  graph.remove();
-  graph = new p5(defaultPlotSketch, "graph-holder");
+  // graph.remove();
+  // graph = new p5(defaultPlotSketch, "graph-holder");
 
 }
 
